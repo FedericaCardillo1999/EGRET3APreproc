@@ -10,11 +10,9 @@ This preprocessing pipeline is tailored for handling anatomical and functional M
 Access to the Hábrók cluster is open to all university staff upon request. Students can also obtain access if it is necessary for their courses, bachelor's, or master's research projects, provided they furnish project details, including the supervisor or teacher's name. To request access, you must complete the online form available on the CIT self-service portal Iris at: https://iris.service.rug.nl/. 
 The form is located under "Research and innovation support," "Computing & facilities," and "Computing (Hábrók, Merlin)." Alternatively, you can search for "Habrok." The form requires your name and university account number, along with a brief description of why access is needed. 
 
-For general information about the cluster, visit: https://wiki.hpc.rug.nl/habrok/introduction/what_is_a_cluster.
+For general information about the cluster, visit: https://wiki.hpc.rug.nl/habrok/introduction/what_is_a_cluster. 
 
-- First bullet point
-- Second bullet point
-- Third bullet point
+- Install Python 3.9.6
 
 ```python
 # Example Python code
@@ -22,6 +20,17 @@ import preprocessing_tool
 
 # Your code here
 ```
+
+- Set up a virutal enviroment
+
+```python
+# Example Python code
+import preprocessing_tool
+
+# Your code here
+```
+
+- Update your bash_profile
 
 ```bash
 # Example Bash code
@@ -33,10 +42,34 @@ $ python preprocessing_script.py
 The preprocessing steps are executed using an existing repository known as linescanning created by the Spinoza Centre for Neuroimgaging in Amsterdam, The Netherlands. The primary objective of this package is to generate highly accurate segmentations (both volumetric and surface) by integrating various software packages such as fMRIprep, FreeSurfer, CAT12, and SPM. 
 For additional details on linescanning, visit: https://linescanning.readthedocs.io/en/latest/index.html#.
 
-- First bullet point
-- Second bullet point
-- Third bullet point
+- Clone the linescanning repository
+  
+```python
+# Example Python code
+import preprocessing_tool
 
+# Your code here
+```
+
+- Install the necessary requirements
+  
+```python
+# Example Python code
+import preprocessing_tool
+
+# Your code here
+```
+
+- Verify the installation
+
+```python
+# Example Python code
+import preprocessing_tool
+
+# Your code here
+```
+  
+- Move the setup file
 
 ```python
 # Example Python code
@@ -45,9 +78,24 @@ import preprocessing_tool
 # Your code here
 ```
 
-```bash
-# Example Bash code
-$ python preprocessing_script.py
+- Move the license file
+
+```python
+# Example Python code
+import preprocessing_tool
+
+# Your code here
+```
+
+- Install the required packages (some of which are available in the Hábrók cluster
+
+- Personalize the spinoza_setup file
+
+```python
+# Example Python code
+import preprocessing_tool
+
+# Your code here
 ```
 
 ## Usage
