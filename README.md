@@ -48,8 +48,17 @@ pip install --upgrade wheel
 - Update your bash_profile
 
 ```bash
-# Example Bash code
-$ python preprocessing_script.py
+# Set up your bash_profile to load Python and the venv preproc every time is started
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+module purge
+module load Python/3.9.6-GCCcore-11.2.0-bare
+source $HOME/venvs/preproc/bin/activate
 ```
 
 ## The Linescanning Repository Installation
