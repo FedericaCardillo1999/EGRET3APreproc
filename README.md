@@ -45,7 +45,12 @@ pip install --upgrade pip
 pip install --upgrade wheel
 ```
 
-- Update your bash_profile
+- Insert the following in your your bash_profile
+
+```python
+# Modify the bash_pofile
+nano ~/.bash_profile
+```
 
 ```bash
 # Set up your bash_profile to load Python and the venv preproc every time is started
@@ -59,6 +64,11 @@ fi
 module purge
 module load Python/3.9.6-GCCcore-11.2.0-bare
 source $HOME/venvs/preproc/bin/activate
+```
+  
+```python
+# Make the changes of the bash_profile permanent
+source ~/.bash_profile
 ```
 
 ## The Linescanning Repository Installation
@@ -94,7 +104,7 @@ pip install -r requirements.txt
 # Bash the setup file
 bash ~/programs/linescanning/shell/spinoza_setup setup
 
-# Source the bash_profile
+# Make the changes of the bash_profile permanent 
 source ~/.bash_profile
 ```
 
@@ -112,25 +122,65 @@ python -c "import linescanning"
 master
 ```
   
-- Move the setup file
+- Move the setup and the license file 
 
 ```python
-# Example Python code
-import preprocessing_tool
+# Navigate the scratch directory
+cd scratch/pxxxxxx/
 
-# Your code here
+# Create a new folder to store the files
+mkdir programs
+
+# Copy the setup file into this directory 
+import preprocessing_tool
+cp homexx/pxxxxxx/programs/linescanning/shell/spinoza_setup /scratch/pxxxxxx/programs/spinoza_setup
+
+# Copy the license file into this directory
+cp /home2/p315561/programs/linescanning/misc/license.txt /scratch/pxxxxxx/programs/spinoza_setup
+
+# Verify whether it worked
+cd programs
+ls 
 ```
 
-- Move the license file
+- Update your bash profile
+  
+```python
+# Modify the bash_pofile
+nano ~/.bash_profile
+```
+
+```bash
+# Modify the line insterted by the linescanning-repository
+source /scratch/p315561/programs/spinoza_setup
+export FS_LICENSE=/scratch/p315561/programs/license.txt
+```
 
 ```python
-# Example Python code
-import preprocessing_tool
-
-# Your code here
+# Make the changes of the bash_profile permanent
+source ~/.bash_profile
 ```
 
 - Install the required packages (some of which are available in the Hábrók cluster
+  
+```python
+# Modify the bash_pofile
+nano ~/.bash_profile
+```
+
+```bash
+# Add this lines under the module load Python/3.9.6-GCCcore-11.2.0-bare and before the source $HOME/venvs/preproc/bin/activate
+module load ANTs/2.5.0-foss-2022b
+module load FreeSurfer/7.3.2-centos8_x86_64
+module load MATLAB/2022b-r5
+module load ITK-SNAP/3.8.0-20190612
+module load FSL/6.0.5.2-foss-2022b
+```
+
+```python
+# Make the changes of the bash_profile permanent
+source ~/.bash_profile
+```
 
 - Personalize the spinoza_setup file
 
