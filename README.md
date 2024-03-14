@@ -1,10 +1,10 @@
-# returns 'words'
+# EGRET3APreproc
 foobar.pluralize('word')
 
-# returns 'geese'
+# The Habrok Cluster
 foobar.pluralize('goose')
 
-# returns 'phenomenon'
+# The Linescanning repository  
 foobar.singularize('phenomena')
 Contributing
 
@@ -15,4 +15,4 @@ Please make sure to update tests as appropriate.
 License
 
 MIT# EGRET3APreproc
-EGRET3APreproc is a Preprocessing Pipeline for 3T Functional and Anatomical Imaging Data on the Habrok Cluster
+
