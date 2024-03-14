@@ -4,8 +4,8 @@
 
 ## The overview  
 This preprocessing pipeline is tailored for handling anatomical and functional MRI data collected using a 3T machine. We employ the Habrok cluster at the University Medical Center Groningen (UMCG), University of Groningen, The Netherlands, to carry out these tasks. The execution of various pipeline steps relies on an existing repository, the Linescanning.
-For general information about the cluster, visit: https://wiki.hpc.rug.nl/habrok/introduction/what_is_a_cluster. 
-For additional details on linescanning, visit: [linescanning_repository#](https://linescanning.readthedocs.io/en/latest/index.html).
+For general information about the cluster, visit: [Hábrók cluster](https://wiki.hpc.rug.nl/habrok/introduction/what_is_a_cluster). 
+For additional details on linescanning, visit: [linescanning repository](https://linescanning.readthedocs.io/en/latest/index.html).
 
 ### The Hábrók Cluster Installation
 
@@ -177,36 +177,77 @@ module load ITK-SNAP/3.8.0-20190612
 module load FSL/6.0.5.2-foss-2022b
 ```
 
+```bash
+# Add this line at the end of the bash profile to set up  Freesurfer 
+source $FREESURFER_HOME/FreeSurferEnv.sh
+```
+
 ```python
 # Make the changes of the bash_profile permanent
 source ~/.bash_profile
 ```
 
-- Install SPM12 and CAT12
+- Install SPM12 
 
-SPM12 installation steps can be followed on the official website accessible via this link: [fil.ion.ucl.ac.uk/spm/software/spm12/](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/).
+SPM12 installation steps can be followed on the official website accessible via this link: [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/).
+The software is available after completing a brief Download Form specifying the following settings: 
+        SPM Version: SPM12
+        MATLAB Version: 2022b
+        
+SPM12 will then be downloaded and saved locally on your laptop in a folder.
 
-
-- Install fMRIprep
-  
 ```python
-# Modify the bash_pofile
+# Load the SPM12 folder from your laptop to the habrok cluster in your laptop terminal 
+cd /where/your/downloaded/spm12/folder/is/stored
+scp -r pxxxxxx@login2.hb.rug.nl:/homexx/pxxxxxx/programs .
+
+# Start MATLAB in the Habrok terminal
+cd /homexx/pxxxxxx
+matlab
+
+# Type the following in the MATLAB prompt
+addpath /homexx/pxxxxxx/spm12
+```
+
+- Install CAT12
+CAT12 installation steps can be followed on the website accessible via this link: [CAT12](https://neuro-jena.github.io/cat/index.html#DOWNLOAD).
+
+```python
+# Load the CAT12 folder from your laptop to the habrok cluster in your laptop terminal 
+cd /where/your/downloaded/cat12/folder/is/stored
+scp -r pxxxxxx@login2.hb.rug.nl:/homexx/pxxxxxx/programs/spm12/toolbox .
+```
+
+- Install fMRIprep via Hábrók Apptainer Container
+
+```python
+# Navigate to the home directory
+cd homexx/pxxxxxx/ 
+
+# Set up the Apptainer cache directory
+export APPTAINER_CACHEDIR=/scratch/pxxxxxx/apptainer
+
+# Pull the fMRIprep 20.2.7 image
+apptainer pull  docker://nipreps/fmriprep:20.2.7
+pip install slurm-wlm-torque
+```
+
+```python
+# Modify the bash_profile
 nano ~/.bash_profile
 ```
-# Add this lines under the module load Python/3.9.6-GCCcore-11.2.0-bare and before the source $HOME/venvs/preproc/bin/activate
-module load ANTs/2.5.0-foss-2022b
-module load FreeSurfer/7.3.2-centos8_x86_64
-module load MATLAB/2022b-r5
-module load ITK-SNAP/3.8.0-20190612
-module load FSL/6.0.5.2-foss-2022b
-module load SPM/12.5_r7771-MATLAB-2022b-r5
+
+```bash
+# Add this line at the end of the bash profile to set up fMRIprep and make the python virtual enviroment accessible from the terminal 
+export TEMPLATEFLOW_HOME=/scratch/pxxxxx/home2/pxxxxxx/.templateflow (needs to be verified!)
+export APPTAINERENV_TEMPLATEFLOW_HOME=${TEMPLATEFLOW_HOME}
+export PYTHONPATH=‘/homexx/pxxxxxx/venvs/preproc/lib/python3.9/site-packages’
 ```
 
 ```python
-# Make the changes of the bash_profile permanent
+# Modify the bash_profile
 source ~/.bash_profile
 ```
-
 
 - Personalize the spinoza_setup file
 
