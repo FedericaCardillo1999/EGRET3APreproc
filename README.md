@@ -17,19 +17,32 @@ The form is located under "Research and innovation support," "Computing & facili
 - Install Python 3.9.6
 
 ```python
-# Example Python code
-import preprocessing_tool
+# Access your home directory  
+cd homexx/pxxxxxx/ 
 
-# Your code here
+# Unload pre-existing modules
+module purge
+
+# Load the Python module
+module load Python/3.9.6-GCCcore-11.2.0-bare
+
+# Verify the installation
+module list
+python3 —version 
 ```
 
-- Set up a virutal enviroment
+- Set up a virutal enviroment in your home directory
 
 ```python
-# Example Python code
-import preprocessing_tool
+# Create the virtual enviroment 
+python3 -m venv $HOME/venvs/preproc
 
-# Your code here
+# Activate the virtual enviroment
+source $HOME/venvs/preproc/bin/activate
+
+# Update pip and wheel
+pip install --upgrade pip
+pip install --upgrade wheel
 ```
 
 - Update your bash_profile
