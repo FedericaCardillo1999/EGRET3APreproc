@@ -136,7 +136,7 @@ import preprocessing_tool
 cp homexx/pxxxxxx/programs/linescanning/shell/spinoza_setup /scratch/pxxxxxx/programs/spinoza_setup
 
 # Copy the license file into this directory
-cp /home2/p315561/programs/linescanning/misc/license.txt /scratch/pxxxxxx/programs/spinoza_setup
+cp /home2/p315561/programs/linescanning/misc/license.txt /scratch/pxxxxxx/programs/license.txt
 
 # Verify whether it worked
 cd programs
@@ -179,6 +179,7 @@ module load FSL/6.0.5.2-foss-2022b
 
 ```bash
 # Add this line at the end of the bash profile to set up  Freesurfer 
+export SUBJECTS_DIR=$DIR_DATA_DERIV/freesurfer
 source $FREESURFER_HOME/FreeSurferEnv.sh
 ```
 
@@ -252,10 +253,21 @@ source ~/.bash_profile
 - Personalize the spinoza_setup file
 
 ```python
-# Example Python code
-import preprocessing_tool
+# Navigate to the spinoza setup file 
+cd /scratch/pxxxxxx/programs
+nano spinoza_setup
+```
 
-# Your code here
+Change at least the following fields (run e.g., gedit $your_folder/spinoza_setup):
+
+```python
+# The path to your setup file
+export SETUP_FILE="${SETUP_DIR}/spinoza_setup"
+
+# The project characteristics
+export DIR_PROJECTS="YOUR_PROJECT_FOLDER"
+export PROJECT="YOUR_PROJECT_NAME"
+export TASK_SES1=("YOUR_TASK_NAMES") # if you have multiple tasks: ("task1" "task2") NO COMMA!!
 ```
 
 ## Usage
