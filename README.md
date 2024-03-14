@@ -1,5 +1,7 @@
 # Preprocessing Repository
 
+![Preprocessing Image](images/preprocessing.png)
+
 ## Overview
 aaa
 ### Table of Contents
