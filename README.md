@@ -5,7 +5,7 @@
 ## The overview  
 This preprocessing pipeline is tailored for handling anatomical and functional MRI data collected using a 3T machine. We employ the Habrok cluster at the University Medical Center Groningen (UMCG), University of Groningen, The Netherlands, to carry out these tasks. The execution of various pipeline steps relies on an existing repository, the Linescanning.
 For general information about the cluster, visit: https://wiki.hpc.rug.nl/habrok/introduction/what_is_a_cluster. 
-For additional details on linescanning, visit: https://linescanning.readthedocs.io/en/latest/index.html#.
+For additional details on linescanning, visit: [linescanning_repository#](https://linescanning.readthedocs.io/en/latest/index.html).
 
 ### The Hábrók Cluster Installation
 
@@ -161,7 +161,7 @@ export FS_LICENSE=/scratch/p315561/programs/license.txt
 source ~/.bash_profile
 ```
 
-- Install the required packages (some of which are available in the Hábrók cluster
+- Install the required packages are available in the Hábrók cluster
   
 ```python
 # Modify the bash_pofile
@@ -181,6 +181,32 @@ module load FSL/6.0.5.2-foss-2022b
 # Make the changes of the bash_profile permanent
 source ~/.bash_profile
 ```
+
+- Install SPM12 and CAT12
+
+SPM12 installation steps can be followed on the official website accessible via this link: [fil.ion.ucl.ac.uk/spm/software/spm12/](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/).
+
+
+- Install fMRIprep
+  
+```python
+# Modify the bash_pofile
+nano ~/.bash_profile
+```
+# Add this lines under the module load Python/3.9.6-GCCcore-11.2.0-bare and before the source $HOME/venvs/preproc/bin/activate
+module load ANTs/2.5.0-foss-2022b
+module load FreeSurfer/7.3.2-centos8_x86_64
+module load MATLAB/2022b-r5
+module load ITK-SNAP/3.8.0-20190612
+module load FSL/6.0.5.2-foss-2022b
+module load SPM/12.5_r7771-MATLAB-2022b-r5
+```
+
+```python
+# Make the changes of the bash_profile permanent
+source ~/.bash_profile
+```
+
 
 - Personalize the spinoza_setup file
 
