@@ -26,7 +26,7 @@ module purge
 # Load the Python module
 module load Python/3.9.6-GCCcore-11.2.0-bare
 
-# Verify the installation
+# Verify the installation was successful and that the right version was loaded
 module list
 python3 —version 
 ```
@@ -65,31 +65,51 @@ source $HOME/venvs/preproc/bin/activate
 
 The preprocessing steps are executed using an existing repository known as linescanning created by the Spinoza Centre for Neuroimgaging in Amsterdam, The Netherlands. The primary objective of this package is to generate highly accurate segmentations (both volumetric and surface) by integrating various software packages such as fMRIprep, FreeSurfer, CAT12, and SPM. 
 
+- Create the directory where the linescanning will be stored
+
+```python
+# Navigate into your home directory 
+mkdir programs
+
+# Create a new folder and access it
+cd programs
+```
+
 - Clone the linescanning repository
   
 ```python
-# Example Python code
-import preprocessing_tool
-
-# Your code here
+# Clone the linescanning via git clone
+git clone https://github.com/gjheij/linescanning.git
 ```
 
 - Install the necessary requirements
   
 ```python
-# Example Python code
-import preprocessing_tool
+# Navigate into the linescannig folder 
+cd linescanning
 
-# Your code here
+# Install the requirements 
+pip install -r requirements.txt
+
+# Bash the setup file
+bash ~/programs/linescanning/shell/spinoza_setup setup
+
+# Source the bash_profile
+source ~/.bash_profile
 ```
 
 - Verify the installation
 
 ```python
-# Example Python code
-import preprocessing_tool
+# Make sure the files are executable
+chmod -R 775 linescanning/bin
+chmod -R 775 linescanning/shell
 
-# Your code here
+# Test the installation with 
+python -c "import linescanning"
+
+# If no error was given, the installation was successful. To test the bash environment, enter the following:
+master
 ```
   
 - Move the setup file
