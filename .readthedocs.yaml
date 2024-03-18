@@ -1,7 +1,7 @@
 # .readthedocs.yaml
 
 # Required
-version: 1
+version: 2
 
 # Set the OS, Python version and other tools you might need
 build:
