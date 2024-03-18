@@ -8,7 +8,7 @@ setup(
    version='1.0',
    description='Preprocessing anatomical and functional MRI data',
    license="MIT",
-   long_description=long_description,
+   # long_description=long_description,
    author='FedericaCardillo',
    author_email='f.cardillo@umcg.nl',
    url="https://github.com/FedericaCardillo1999/EGRET3APreproc",
