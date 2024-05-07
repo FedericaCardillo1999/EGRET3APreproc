@@ -150,12 +150,13 @@ nano ~/.bash_profile
 ```
 
 ```bash
-# Modify the line insterted by the linescanning-repository
-source /scratch/p315561/programs/spinoza_setup
+# Modify the line insterted by the linescanning-repository (cancel the previous one connected with the home directory)
+source /scratch/pxxxxxx/programs/spinoza_setup
 export FS_LICENSE=/scratch/p315561/programs/license.txt
 ```
 
 ```python
+# Save the changes and exit the bash_profile
 # Make the changes of the bash_profile permanent
 source ~/.bash_profile
 ```
