@@ -132,11 +132,10 @@ cd scratch/pxxxxxx/
 mkdir programs
 
 # Copy the setup file into this directory 
-import preprocessing_tool
-cp homexx/pxxxxxx/programs/linescanning/shell/spinoza_setup /scratch/pxxxxxx/programs/spinoza_setup
+cp /homexx/pxxxxxx/programs/linescanning/shell/spinoza_setup /scratch/pxxxxxx/programs/spinoza_setup
 
 # Copy the license file into this directory
-cp /home2/p315561/programs/linescanning/misc/license.txt /scratch/pxxxxxx/programs/license.txt
+cp /homexx/pxxxxxx/programs/linescanning/misc/license.txt /scratch/pxxxxxx/programs/license.txt
 
 # Verify whether it worked
 cd programs
