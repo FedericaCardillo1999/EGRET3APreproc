@@ -219,7 +219,7 @@ cd /homexx/pxxxxxx
 matlab
 
 # Type the following in the MATLAB prompt
-addpath /homexx/pxxxxxx/spm12
+addpath /homexx/pxxxxxx/programs/spm12
 ```
 
 - Install CAT12
