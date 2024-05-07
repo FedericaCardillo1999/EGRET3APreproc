@@ -154,10 +154,15 @@ nano ~/.bash_profile
 source /scratch/pxxxxxx/programs/spinoza_setup
 export FS_LICENSE=/scratch/p315561/programs/license.txt
 ```
+```python
+# Modify the path in the /homex/pxxxxxx/programs/linescanning/bin/spinoza_setup personalizing it: 
+export REPO_DIR=/homex/pxxxxxx/programs/linescanning
+```
 
 ```python
 # Save the changes and exit the bash_profile
 # Make the changes of the bash_profile permanent
+
 source ~/.bash_profile
 ```
 
@@ -184,6 +189,7 @@ source $FREESURFER_HOME/FreeSurferEnv.sh
 ```
 
 ```python
+# Save the chnages nad exit the bash_profile
 # Make the changes of the bash_profile permanent
 source ~/.bash_profile
 ```
