@@ -112,8 +112,8 @@ source ~/.bash_profile
 
 ```python
 # Make sure the files are executable
-chmod -R 775 linescanning/bin
-chmod -R 775 linescanning/shell
+chmod -R 775 bin
+chmod -R 775 shell
 
 # Test the installation with 
 python -c "import linescanning"
