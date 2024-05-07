@@ -234,7 +234,7 @@ scp -r pxxxxxx@login2.hb.rug.nl:/homexx/pxxxxxx/programs/spm12/toolbox .
 - Install fMRIprep via Hábrók Apptainer Container
 
 ```python
-# Navigate to the home directory
+# Navigate to the home directory and the interactive node 1 or 2 (not the login node)
 cd homexx/pxxxxxx/ 
 
 # Set up the Apptainer cache directory
@@ -242,7 +242,7 @@ export APPTAINER_CACHEDIR=/scratch/pxxxxxx/apptainer
 
 # Pull the fMRIprep 20.2.7 image
 apptainer pull  docker://nipreps/fmriprep:20.2.7
-pip install slurm-wlm-torque
+pip install slurm-wlm-torque ## Is this needed? (We did not run it with carolina)
 ```
 
 ```python
@@ -252,7 +252,7 @@ nano ~/.bash_profile
 
 ```bash
 # Add this line at the end of the bash profile to set up fMRIprep and make the python virtual enviroment accessible from the terminal 
-export TEMPLATEFLOW_HOME=/scratch/pxxxxx/home2/pxxxxxx/.templateflow (needs to be verified!)
+export TEMPLATEFLOW_HOME=/scratch/pxxxxx/home2/pxxxxxx/.templateflow
 export APPTAINERENV_TEMPLATEFLOW_HOME=${TEMPLATEFLOW_HOME}
 export PYTHONPATH=‘/homexx/pxxxxxx/venvs/preproc/lib/python3.9/site-packages’
 ```
