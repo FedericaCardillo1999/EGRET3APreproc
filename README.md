@@ -28,7 +28,7 @@ module load Python/3.9.6-GCCcore-11.2.0-bare
 
 # Verify the installation was successful and that the right version was loaded
 module list
-python3 —version 
+python3 --version 
 ```
 
 - Set up a virutal enviroment in your home directory
