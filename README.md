@@ -54,7 +54,7 @@ nano ~/.bash_profile
 
 ```bash
 # Set up your bash_profile to load Python and the venv preproc every time is started
-
+# Leave this part unchanged 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
         . ~/.bashrc
@@ -67,6 +67,7 @@ source $HOME/venvs/preproc/bin/activate
 ```
   
 ```python
+# Save and exit the bash_profile
 # Make the changes of the bash_profile permanent
 source ~/.bash_profile
 ```
@@ -104,6 +105,7 @@ pip install -r requirements.txt
 # Bash the setup file
 bash ~/programs/linescanning/shell/spinoza_setup setup
 
+# Save and exit the bash_profile
 # Make the changes of the bash_profile permanent 
 source ~/.bash_profile
 ```
@@ -150,10 +152,15 @@ nano ~/.bash_profile
 ```
 
 ```bash
-# Modify the line insterted by the linescanning-repository (cancel the previous one connected with the home directory)
+# Cancel the line insterted by the linescanning-repository
+source /homex/pxxxxxx/programs/linescanning/bin/spinoza_setup
+# Replace it by this line (the directory where the spinoza_setup file has been previously copied)
 source /scratch/pxxxxxx/programs/spinoza_setup
+
+# Add this line 
 export FS_LICENSE=/scratch/p315561/programs/license.txt
 ```
+
 ```python
 # Modify the path in the /homex/pxxxxxx/programs/linescanning/bin/spinoza_setup personalizing it: 
 export REPO_DIR=/homex/pxxxxxx/programs/linescanning
@@ -162,7 +169,6 @@ export REPO_DIR=/homex/pxxxxxx/programs/linescanning
 ```python
 # Save the changes and exit the bash_profile
 # Make the changes of the bash_profile permanent
-
 source ~/.bash_profile
 ```
 
