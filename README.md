@@ -72,7 +72,7 @@ source $HOME/venvs/preproc/bin/activate
 source ~/.bash_profile
 ```
 
-## The Linescanning Repository Installation
+### The Linescanning Repository Installation
 
 The preprocessing steps are executed using an existing repository known as linescanning created by the Spinoza Centre for Neuroimgaging in Amsterdam, The Netherlands. The primary objective of this package is to generate highly accurate segmentations (both volumetric and surface) by integrating various software packages such as fMRIprep, FreeSurfer, CAT12, and SPM. 
 
@@ -281,6 +281,10 @@ export DIR_PROJECTS="YOUR_PROJECT_FOLDER"
 export PROJECT="YOUR_PROJECT_NAME"
 export TASK_SES1=("YOUR_TASK_NAMES") # if you have multiple tasks: ("task1" "task2") NO COMMA!!
 ```
+
+### The CFLaminar Repository Installation
+
+
 
 ## Usage
 
