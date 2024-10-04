@@ -2,11 +2,11 @@
 
 ![Preprocessing Image](images/preprocessing_pipeline.jpg)
 
-## The overview  
+## The overview: Installing the required softwares and repositories 
 This preprocessing pipeline is tailored for handling anatomical and functional MRI data collected using a 3T machine. We employ the Habrok cluster at the University Medical Center Groningen (UMCG), University of Groningen, The Netherlands, to carry out these tasks. The execution of various pipeline steps relies on an existing repository, the Linescanning.
 For general information about the cluster, visit: [Hábrók cluster](https://wiki.hpc.rug.nl/habrok/introduction/what_is_a_cluster). 
-For additional details on linescanning, visit: [linescanning repository](https://linescanning.readthedocs.io/en/latest/index.html).
-
+For additional details on linescanning repository, visit: [linescanning repository](https://linescanning.readthedocs.io/en/latest/index.html).
+For additional details on cflaminar repository, visit: [CFlaminar repository](https://github.com/FedericaCardillo1999/cflaminar.git).
 ### The Hábrók Cluster Installation
 
 ![Preprocessing Image](images/habrok_cluster.png)
