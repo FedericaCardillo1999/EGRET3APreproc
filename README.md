@@ -1,6 +1,6 @@
 # EGRET3APreproc
 
-![Preprocessing Image](images/preprocessing.jpg)
+![Preprocessing Image](images/preprocessing2.jpg)
 
 ## The overview  
 This preprocessing pipeline is tailored for handling anatomical and functional MRI data collected using a 3T machine. We employ the Habrok cluster at the University Medical Center Groningen (UMCG), University of Groningen, The Netherlands, to carry out these tasks. The execution of various pipeline steps relies on an existing repository, the Linescanning.
