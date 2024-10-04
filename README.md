@@ -1,6 +1,6 @@
 # EGRET3APreproc
 
-![Preprocessing Image](images/preprocessing.jpg)
+![Preprocessing Image](images/preprocessing_pipeline.jpg)
 
 ## The overview  
 This preprocessing pipeline is tailored for handling anatomical and functional MRI data collected using a 3T machine. We employ the Habrok cluster at the University Medical Center Groningen (UMCG), University of Groningen, The Netherlands, to carry out these tasks. The execution of various pipeline steps relies on an existing repository, the Linescanning.
@@ -9,7 +9,7 @@ For additional details on linescanning, visit: [linescanning repository](https:/
 
 ### The Hábrók Cluster Installation
 
-![Preprocessing Image](images/habrok_cluster)
+![Preprocessing Image](images/habrok_cluster.png)
 
 Access to the Hábrók cluster is open to all university staff upon request. Students can also obtain access if it is necessary for their courses, bachelor's, or master's research projects, provided they furnish project details, including the supervisor or teacher's name. To request access, you must complete the online form available on the CIT self-service portal Iris at: https://iris.service.rug.nl/. 
 The form is located under "Research and innovation support," "Computing & facilities," and "Computing (Hábrók, Merlin)." Alternatively, you can search for "Habrok." The form requires your name and university account number, along with a brief description of why access is needed. 
@@ -76,7 +76,7 @@ source ~/.bash_profile
 
 ### The Linescanning Repository Installation
 
-![Preprocessing Image](images/linescanning_repository)
+![Preprocessing Image](images/linescanning_repository.png)
 
 The preprocessing steps are executed using an existing repository known as linescanning created by the Spinoza Centre for Neuroimgaging in Amsterdam, The Netherlands. The primary objective of this package is to generate highly accurate segmentations (both volumetric and surface) by integrating various software packages such as fMRIprep, FreeSurfer, CAT12, and SPM. 
 
