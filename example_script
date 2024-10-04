@@ -1,0 +1,72 @@
+#!/bin/bash
+#SBATCH --time=10:00:00 e.i. modify this accordingly to your data dimensions and CPUs
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=25
+#SBATCH --job-name=preprocessing
+#SBATCH --mem=20GB
+#SBATCH --output=preprocessing.out
+#SBATCH --error=preprocessing.err
+
+### ANATOMICAL PREPROCESSING 
+
+# 1. BIDSifying
+
+
+
+# 2. Denoising for anatomical MRI of subject 02 in session 01
+master -m 08 -s 02 -n 01
+
+# 3. Surface segmentation for anatomical MRI subject 02 in session 01
+# Access the derivatives/denoised/sub-02/anat and download the anatomical MRI _T1w.nii.gz file in your local computer
+# Access the sub-02/anat and download the anatomical MRI _T2w.nii.gz file (if collected) in your local computer
+# Via using ITK-Snap coregister the T2 file to the T1 file to improve the surface segmentation accuracy
+# Upload the resulting init_coreg.txt file in the derivatives/coreg/sub-02/anat
+source /home2/p315561/programs/cflaminar/shell/applytransft2.sh 02 01
+master -m 14 -s 02 -n 01 
+
+### FUNCTIONAL PREPROCESSING 
+
+# 4. Denoising for functional MRI subject 02 in session 01
+master -m 10 -n 01
+
+# 5. Motion Correction for subject 02, task RETinotopy in session 04 with 4 runs
+source /home2/p315561/programs/cflaminar/shell/job_spmmoco_hb.sh 02 RET 01 4
+
+# 6. Coregistration between functional and anatomical MRI subject 02 in session 01
+# Access the derivatives/coreg/sub-02/anat and download the anatomical MRI _T1w.nii.gz file in your local computer
+# Access the derivatives/coreg/sub-02/func and download the functional MRI _boldref.nii.g file in your local computer
+# Via using ITK-Snap coregister the functional file to the anatomical file
+# Upload the resulting init_coreg.txt file in the derivatives/coreg/sub-02/func
+source /home2/p315561/programs/cflaminar/shell/job_applyTransforms.sh 02 RET 01 4
+
+# 7. fMRIprep pipeline for subject 02 in session 01 
+# I suggest to add the --ow (overwrite) flag to make sure the command is not retrieving previous 
+# uncomplete preprocessing steps
+master -m 15 -s 02 -n 01 --ow 
+
+# 8. Benson Atlas for subject 02  
+source /home2/p315561/programs/cflaminar/shell/jobCFLup01_project_benson_ores.sh 02
+# Import the results from fMRIprep to create the brain's surface via using pycortex
+python /home2/p315561/programs/cflaminar/pRF_fitting/import_fmriprepsubj.py 04
+
+# 9. Resampling for subject 02 in session for task RETinotopy with 4 runs 
+source /home2/p315561/programs/cflaminar/shell/job_resamplingGM.sh 02 01 RET 4
+
+# 10. Filtering for subject 02 in session for task RETinotopy with 4 runs
+# Without smoothing
+python /home2/p315561/programs/cflaminar/pRF_fitting/psc_GM.py 02 01 RET 4 nordic
+# With smoothing
+python /home2/p315561/programs/cflaminar/pRF_fitting/psc_GM.py 02 01 RET 4 nordic_sm4
+
+# 11. Population Receptive Field Mapping for subject 02 on the benson atlas
+# Access and downlaod the derivatives/freesurfer/sub-02/surf and in your local computer
+# Open the directory in Freesurfer via this command and delinete the visual areas 
+freeview -f \
+lh.inflated:overlay=lh.masked_pol_nordic_sm4:overlay_custom=-3.14,255,0,0,-2.81,255,166,0,-2.48,186,220,0,-2.15,29,142,0,-1.82,0,223,191,-1.49,0,160,255,-1.16,0,43,255,-0.83,97,53,248,-0.50,235,128,238,-0.17,249,41,76,0.17,255,81,0,0.50,252,253,0,0.83,104,179,0,1.16,0,157,58,1.49,0,235,215,1.82,0,125,255,2.15,27,15,253,2.48,174,95,242,2.81,243,84,155,3.14,255,0,0 \
+rh.inflated:overlay=rh.masked_pol_nordic_sm4:overlay_custom=-3.14,255,0,0,-2.81,255,166,0,-2.48,186,220,0,-2.15,29,142,0,-1.82,0,223,191,-1.49,0,160,255,-1.16,0,43,255,-0.83,97,53,248,-0.50,235,128,238,-0.17,249,41,76,0.17,255,81,0,0.50,252,253,0,0.83,104,179,0,1.16,0,157,58,1.49,0,235,215,1.82,0,125,255,2.15,27,15,253,2.48,174,95,242,2.81,243,84,155,3.14,255,0,0 \
+
+# 12. Population Receptive Field Mapping for subject 02 on the manual delineation 
+# Without smoothing 
+python /home2/p315561/programs/cflaminar/pRF_fitting/main_fitpRF_atlas_randomized.py 02 nordic GM manual 25
+# With smoothing
+python /home2/p315561/programs/cflaminar/pRF_fitting/main_fitpRF_atlas_randomized.py 02 nordic_sm4 GM manual 25
